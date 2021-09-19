@@ -21,7 +21,7 @@ namespace SolarCoffee.Web.Controllers
         }
         
 
-        //The service layer does not connect directly to the database. The concerns of the controller should be just dealing with the requests and providing responses.
+        //The service layer (not the controller) connects to the database. The concerns of the controller should be just dealing with the requests and providing responses.
 
         [HttpGet("/api/product")]
         public ActionResult GetProduct()
@@ -32,6 +32,15 @@ namespace SolarCoffee.Web.Controllers
             var productViewModels = products.Select(ProductMapper.SerializeProductModel);
 
             return Ok(productViewModels);
+        }
+
+        //This could be a Delete. Apparently Deletes are often used semanticly
+        [HttpPatch("/api/product/{id}")]
+        public ActionResult ArchiveProduct(int id)
+        {
+            _logger.LogInformation("Archiving product.");
+            var archiveResult = _productService.ArchiveProduct(id);
+            return Ok(archiveResult);
         }
     }
 }
