@@ -1,44 +1,45 @@
 <template>
     <transition name="modal-fade">
-        <div 
-             class="modal"
-             role="dialog"
-             aria-labelledby="modalTitle"
-             aria-describedby="modalDescription">
-            <header
-                    class="modal-header"
-                    id="modalTitle">
-                <slot name="header">
-                </slot>
-            </header>
-            <section
-                     class="modal-body"
-                     id="modalDescription">
-                <slot name="body">
-                </slot>
-            </section>
-            <footer class="modal-footer">
-                <slot name="footer">
-                </slot>
-            </footer>
+        <div class="modal-backdrop">
+            <div class="modal"
+                 role="dialog"
+                 aria-labelledby="modalTitle"
+                 aria-describedby="modalDescription">
+                <header class="modal-header"
+                        id="modalTitle">
+                    <slot name="header">
+                    </slot>
+                </header>
+
+                <section class="modal-body"
+                         id="modalDescription">
+                    <slot name="body">
+                    </slot>
+                </section>
+
+                <footer class="modal-footer">
+                    <slot name="footer">
+                    </slot>
+                </footer>
+            </div>
         </div>
     </transition>
 </template>
-<script lang="ts">
-    import Vue from 'vue';
-    import Component from 'vue-class-component';
 
+<script lang="ts">
+    import Vue from "vue";
+    import Component from "vue-class-component";
     @Component({
         name: "SolarModal",
         components: {}
     })
-
     export default class SolarModal extends Vue {
         close() {
             this.$emit("close");
         }
     }
 </script>
+
 <style scoped lang="scss">
     @import "@/scss/global.scss";
 
@@ -86,6 +87,7 @@
         position: relative;
         padding: 2.4rem;
     }
+
     .modal-fade-enter,
     .modal-fade-leave-active {
         opacity: 0;

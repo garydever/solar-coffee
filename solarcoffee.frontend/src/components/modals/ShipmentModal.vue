@@ -1,23 +1,23 @@
+<!--suppress XmlUnboundNsPrefix -->
+
 <template>
 	<solar-modal>
 		<template v-slot:header>
 			Receive Shipment
 		</template>
-
 		<template v-slot:body>
 			<label for="product">Product Received:</label>
-
-			<select v-model="selectedProduct" class="shipmentItems" id="product">
+			<select v-model="selectedProduct" class="shipmentItems" id="product" >
 				<option disabled value="">Please select one</option>
 				<option v-for="item in inventory" :value="item" :key="item.product.id">
 					{{ item.product.name }}
 				</option>
 			</select>
-
+			<br />
+			<br />
 			<label for="qtyReceived">Quantity Received:</label>
 			<input type="number" id="qtyReceived" v-model="qtyReceived" />
 		</template>
-
 		<template v-slot:footer>
 			<solar-button type="button"
 						  @button:click="save"
@@ -34,34 +34,31 @@
 </template>
 
 <script lang="ts">
-	import { Component, Vue, Prop } from "vue-property-decorator";
-	import SolarButton from '@/components/SolarButton.vue';
-	import SolarModal from '@/components/modals/SolarModal.vue';
-	import { IProductInventory, IProduct } from '../../types/Product';
-	import { IShipment } from '@/types/Shipment';
-
+	import { Component, Prop, Vue } from "vue-property-decorator";
+	import SolarButton from "@/components/SolarButton.vue";
+	import SolarModal from "@/components/modals/SolarModal.vue";
+	import { IProduct, IProductInventory } from "@/types/Product";
+	import { IShipment } from "@/types/Shipment";
 	@Component({
-		name: 'ShipmentModal',
+		name: "ShipmentModal",
 		components: { SolarButton, SolarModal }
 	})
 	export default class ShipmentModal extends Vue {
 		@Prop({ required: true, type: Array as () => IProductInventory[] })
 		inventory!: IProductInventory[];
-        selectedProduct: IProduct = {
-            createdOn: new Date(),
-            updatedOn: new Date(),
-            id: 0,
-            description: "",
-            isTaxable: false,
-            name: "",
-            price: 0,
-            isArchived: false
+		selectedProduct: IProduct = {
+			createdOn: new Date(),
+			updatedOn: new Date(),
+			id: 0,
+			description: "",
+			isTaxable: false,
+			name: "",
+			price: 0,
+			isArchived: false
 		};
-
-		qtyReceived = 0;
-
+		qtyReceived: 0;
 		close() {
-			this.$emit('close');
+			this.$emit("close");
 		}
 		save() {
 			let shipment: IShipment = {
@@ -69,11 +66,15 @@
 				adjustment: this.qtyReceived
 			};
 			this.$emit('save:shipment', shipment)
-        }
-    }
-
+		}
+	}
 </script>
 
 <style scoped>
-
+	label {
+		margin-right: 5px;
+	}
+	#qtyReceived {
+		max-width: 50px;
+	}
 </style>

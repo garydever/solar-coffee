@@ -1,7 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using SolarCoffee.Data.Models;
+using SolarCoffee.Services;
 using SolarCoffee.Services.Product;
 using SolarCoffee.Web.Serialization;
+using SolarCoffee.Web.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,8 +23,21 @@ namespace SolarCoffee.Web.Controllers
             _productService = productService;
         }
         
-
         //The service layer (not the controller) connects to the database. The concerns of the controller should be just dealing with the requests and providing responses.
+
+        [HttpPost("/api/product")]
+        public ActionResult AddProduct([FromBody] ProductModel product)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            _logger.LogInformation("Adding product");
+            Product newProduct = ProductMapper.SerializeProductModel(product);
+            ServiceResponse<Product> newProductResponse = _productService.CreateProduct(newProduct);
+            return Ok(newProductResponse);
+        }
+
 
         [HttpGet("/api/product")]
         public ActionResult GetProduct()
