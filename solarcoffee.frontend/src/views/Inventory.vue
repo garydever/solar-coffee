@@ -164,4 +164,8 @@
         font-size: 1.2rem;
         color: $solar-red;
     }
+
+    table {
+        text-align: center;
+    }
 </style>

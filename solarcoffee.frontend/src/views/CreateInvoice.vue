@@ -218,14 +218,14 @@
         downloadPdf() {
             const pdf = new jsPDF("p", "pt", "a4", true);
             const invoice = document.getElementById('invoice');
-            const width = this.$refs.invoice.clientWidth;
-            const height = this.$refs.invoice.clientHeight;
+            const width = this.$refs.invoice?.clientWidth;
+            const height = this.$refs.invoice?.clientHeight;
 
 
             if (invoice) {
                 html2canvas(invoice).then(canvas => {
                     const image = canvas.toDataURL('image/png');
-                    pdf.addImage(image, 'PNG', 0, 0, width * 0.55, height * 0.55);
+                    pdf.addImage(image, 'PNG', 0, 0, width * 0.65, height * 0.65);
                     pdf.save('invoice');
                 })
             }

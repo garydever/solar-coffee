@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using SolarCoffee.Data.Models;
 using SolarCoffee.Services.Inventory;
 using SolarCoffee.Web.Serialization;
 using SolarCoffee.Web.ViewModels;
@@ -51,5 +52,21 @@ namespace SolarCoffee.Web.Controllers
             return Ok(inventory);           
         }
 
+        [HttpGet("/api/inventory/snapshot")]
+        public ActionResult GetSnapshotHistory()
+        {
+            _logger.LogInformation('Getting snapshot history');
+
+            try
+            {
+                List<ProductInventorySnapshot> snapshotHistory = _inventoryService.GetSnapshotHistory();
+
+                List<DateTime> timelineMarkers = snapshotHistory.Select(t => t.SnapshotTime)
+                                                     .Distinct()
+                                                     .ToList();
+
+
+            }
+        }
     }
 }
