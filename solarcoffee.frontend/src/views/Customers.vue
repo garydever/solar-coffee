@@ -1,7 +1,7 @@
 <template>
     <div>
-        <h1 id="CustomersTitle">
-            MAnage Customers
+        <h1 id="customersTitle">
+            Manage Customers
         </h1>
         <hr />
         <div class="customer-actions">

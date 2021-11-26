@@ -8,7 +8,7 @@ class GlobalStore {
         timeline: []
     };
 
-    isTimelineBuit: boolean = false;
+    isTimelineBuilt = false;
 }
 
 const state = new GlobalStore();
@@ -29,5 +29,13 @@ const actions = {
         commit('SET_IS_TIMELINE_BUILT', true);
     }
 }
+const getters = {};
+
+export default {
+    state,
+    mutations,
+    actions,
+    getters
+};
 
 

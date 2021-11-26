@@ -4,12 +4,12 @@
            Inventory Dashboard 
        </h1>
        <hr />
-
+       <InventoryChart />
        <div class="inventory-actions">
            <solar-button @button:click="showNewProductModal" id="addNewBtn">
                Add New Item
            </solar-button>
-           <solar-button @button:click="showShipmentModal" id="recieveShipmentBtn">
+           <solar-button @button:click="showShipmentModal" id="receiveShipmentBtn">
                Receive Shipment
            </solar-button>
        </div>
@@ -64,19 +64,20 @@
 <script lang="ts">
     import { Component, Vue } from 'vue-property-decorator';
     import { IProductInventory, IProduct } from "@/types/Product";
-    import SolarButton from '@/components/SolarButton.vue';
-    import NewProductModal from '@/components/modals/NewProductModal.vue';
-    import ShipmentModal from "@/components/modals/ShipmentModal.vue";
     import { IShipment } from '../types/Shipment';
     import { InventoryService } from '@/services/inventory-service';
     import { ProductService } from '@/services/product-service';
+    import InventoryChart from '@/components/charts/InventoryChart.vue';
+    import SolarButton from '@/components/SolarButton.vue';
+    import NewProductModal from '@/components/modals/NewProductModal.vue';
+    import ShipmentModal from "@/components/modals/ShipmentModal.vue";
 
     const inventoryService = new InventoryService();
     const productService = new ProductService();
 
     @Component({
         name: 'Inventory',
-        components: { SolarButton, NewProductModal, ShipmentModal }
+        components: { SolarButton, NewProductModal, ShipmentModal, InventoryChart }
     })
 
     export default class Inventory extends Vue {
@@ -126,6 +127,7 @@
 
         async initialize() {
             this.inventory = await inventoryService.getInventory();
+            await this.$store.dispatch("assignSnapshots");
         }
 
         async created() {

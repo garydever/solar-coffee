@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1637416311256" clover="3.2.0">
+  <project timestamp="1637416311256" name="All files">
+    <metrics statements="11" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0" elements="13" coveredelements="9" complexity="0" loc="11" ncloc="11" packages="1" files="2" classes="2"/>
+    <file name="SideMenu.vue" path="C:\Users\garyt\source\repos\SolarCoffee\solarcoffee.frontend\src\components\SideMenu.vue">
+      <metrics statements="4" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+      <line num="31" count="1" type="stmt"/>
+      <line num="32" count="1" type="stmt"/>
+      <line num="39" count="1" type="stmt"/>
+      <line num="41" count="0" type="stmt"/>
+    </file>
+    <file name="SolarButton.vue" path="C:\Users\garyt\source\repos\SolarCoffee\solarcoffee.frontend\src\components\SolarButton.vue">
+      <metrics statements="7" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+      <line num="13" count="2" type="stmt"/>
+      <line num="14" count="2" type="stmt"/>
+      <line num="15" count="2" type="stmt"/>
+      <line num="21" count="2" type="stmt"/>
+      <line num="24" count="2" type="stmt"/>
+      <line num="27" count="2" type="stmt"/>
+      <line num="30" count="0" type="stmt"/>
+    </file>
+  </project>
+</coverage>

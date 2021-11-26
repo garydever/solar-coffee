@@ -55,17 +55,40 @@ namespace SolarCoffee.Web.Controllers
         [HttpGet("/api/inventory/snapshot")]
         public ActionResult GetSnapshotHistory()
         {
-            _logger.LogInformation('Getting snapshot history');
-
+            _logger.LogInformation("Getting snapshot history");
+            //YOU SHOULD CHECK OUT HOW THIS GROUP BY THING ACTUALLY WORKS NEXT TIME YOU RUN THIS
             try
             {
                 List<ProductInventorySnapshot> snapshotHistory = _inventoryService.GetSnapshotHistory();
 
+                //get distinct points in time a snapshot was collected
                 List<DateTime> timelineMarkers = snapshotHistory.Select(t => t.SnapshotTime)
                                                      .Distinct()
                                                      .ToList();
 
+                //get quantities grouped by id
+                var snapshots = snapshotHistory
+                                    .GroupBy(hist => hist.Product, hist => hist.QuantityOnHand,
+                                    (key, g) => new ProductInventorySnapshotModel
+                                    {
+                                        ProductId = key.Id,
+                                        QuantityOnHand = g.ToList()
+                                    })
+                                    .OrderBy(hist => hist.ProductId)
+                                    .ToList();
 
+                var viewModel = new SnapshotResponse
+                {
+                    Timeline = timelineMarkers,
+                    ProductInventorySnapshots = snapshots
+                };
+                return Ok(viewModel);
+            }
+            catch(Exception e)
+            {
+                _logger.LogError("Error getting snapshot history.");
+                _logger.LogError(e.StackTrace);
+                return BadRequest("Error retrieving snapshot history");
             }
         }
     }
