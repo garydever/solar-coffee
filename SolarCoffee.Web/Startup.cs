@@ -50,11 +50,13 @@ namespace SolarCoffee.Web
                     {
                         NamingStrategy = new CamelCaseNamingStrategy()
                     };
-                }); 
+                });
+            var x = Configuration.GetConnectionString("solar.dev");
+
             services.AddDbContext<SolarDbContext>(options => 
             {
                 options.EnableDetailedErrors();
-                options.UseNpgsql(Configuration.GetConnectionString("solar.dev"));
+                options.UseSqlServer(Configuration.GetConnectionString("solar.dev"));
             });
             services.AddTransient<IProductService, ProductService>();
             services.AddTransient<ICustomerService, CustomerService>();
