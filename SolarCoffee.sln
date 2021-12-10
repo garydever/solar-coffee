@@ -11,27 +11,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SolarCoffee.Data", "SolarCo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SolarCoffee.Services", "SolarCoffee.Services\SolarCoffee.Services.csproj", "{ED34329B-76A5-4394-9535-16A6EA46BC54}"
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "solarcoffee.frontend", "solarcoffee.frontend\", "{B3A28C93-02A6-4A61-8141-E6044D6A1C27}"
-	ProjectSection(WebsiteProperties) = preProject
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
-		Debug.AspNetCompiler.VirtualPath = "/localhost_54245"
-		Debug.AspNetCompiler.PhysicalPath = "solarcoffee.frontend\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_54245\"
-		Debug.AspNetCompiler.Updateable = "true"
-		Debug.AspNetCompiler.ForceOverwrite = "true"
-		Debug.AspNetCompiler.FixedNames = "false"
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/localhost_54245"
-		Release.AspNetCompiler.PhysicalPath = "solarcoffee.frontend\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_54245\"
-		Release.AspNetCompiler.Updateable = "true"
-		Release.AspNetCompiler.ForceOverwrite = "true"
-		Release.AspNetCompiler.FixedNames = "false"
-		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "54245"
-		SlnRelativePath = "solarcoffee.frontend\"
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -90,18 +69,6 @@ Global
 		{ED34329B-76A5-4394-9535-16A6EA46BC54}.Release|x64.Build.0 = Release|Any CPU
 		{ED34329B-76A5-4394-9535-16A6EA46BC54}.Release|x86.ActiveCfg = Release|Any CPU
 		{ED34329B-76A5-4394-9535-16A6EA46BC54}.Release|x86.Build.0 = Release|Any CPU
-		{B3A28C93-02A6-4A61-8141-E6044D6A1C27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B3A28C93-02A6-4A61-8141-E6044D6A1C27}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B3A28C93-02A6-4A61-8141-E6044D6A1C27}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{B3A28C93-02A6-4A61-8141-E6044D6A1C27}.Debug|x64.Build.0 = Debug|Any CPU
-		{B3A28C93-02A6-4A61-8141-E6044D6A1C27}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{B3A28C93-02A6-4A61-8141-E6044D6A1C27}.Debug|x86.Build.0 = Debug|Any CPU
-		{B3A28C93-02A6-4A61-8141-E6044D6A1C27}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{B3A28C93-02A6-4A61-8141-E6044D6A1C27}.Release|Any CPU.Build.0 = Debug|Any CPU
-		{B3A28C93-02A6-4A61-8141-E6044D6A1C27}.Release|x64.ActiveCfg = Debug|Any CPU
-		{B3A28C93-02A6-4A61-8141-E6044D6A1C27}.Release|x64.Build.0 = Debug|Any CPU
-		{B3A28C93-02A6-4A61-8141-E6044D6A1C27}.Release|x86.ActiveCfg = Debug|Any CPU
-		{B3A28C93-02A6-4A61-8141-E6044D6A1C27}.Release|x86.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
